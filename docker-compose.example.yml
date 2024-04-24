@@ -1,0 +1,11 @@
+services:
+  postgres:
+    image: guipguia/multi-pg-database:16.2-alpine3.19
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_MULTIPLE_DATABASES: db1,db2,db3
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: change-me-123
