@@ -1,11 +1,14 @@
 services:
   postgres:
     image: guipguia/multi-pg-database:16.2-alpine3.19
+    command: -c ssl=on -c ssl_cert_file=/var/lib/postgresql/postgresql.crt -c ssl_key_file=/var/lib/postgresql/postgresql.key
     ports:
       - "5432:5432"
-    volumes:
-      - ./db-data:/var/lib/postgresql/data
     environment:
       POSTGRES_MULTIPLE_DATABASES: db1,db2,db3
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: change-me-123
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+      - ./certs/postgresql.crt:/var/lib/postgresql/postgresql.crt
+      - ./certs/postgresql.key:/var/lib/postgresql/postgresql.key
