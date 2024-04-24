@@ -10,7 +10,7 @@ Just with small modifications and update postgres version
 docker pull guipguia/multi-pg-database:16.2-alpine3.19
 ```
 
-# Creating image your self
+# Creating image yourself
 
 If you want to have another version of postgres, you can change the dockerfile and build it again.
 
